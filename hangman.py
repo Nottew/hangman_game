@@ -37,9 +37,9 @@ mustBeShown2 = [i for i, ltr in enumerate(word) if ltr == "-"]
 for i in range(0, len(mustBeShown2)):
     letters[mustBeShown2[i]] = "-"
 
-mustBeShown2 = [i for i, ltr in enumerate(word) if ltr == "'"]
-for i in range(0, len(mustBeShown2)):
-    letters[mustBeShown2[i]] = "'"    
+mustBeShown3 = [i for i, ltr in enumerate(word) if ltr == "’"]
+for i in range(0, len(mustBeShown3)):
+    letters[mustBeShown3[i]] = "’"
 
 def printParameters(): #function can be called anywhere and can show current hp, hangman and guessed letters
     global victimArray
@@ -126,7 +126,20 @@ while True:
         if prompt == "y":
             already_guessed = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
             victimArray = ""
+            word = data_new[random.randint(0, len(data_new))]
+            lettersCounter = len(word)
             letters = ['_']*lettersCounter
+            mustBeShown1 = [i for i, ltr in enumerate(word) if ltr == " "] #symbols that need to be shown and haven't to be guessed
+            for i in range(0, len(mustBeShown1)):
+                letters[mustBeShown1[i]] = " "
+
+            mustBeShown2 = [i for i, ltr in enumerate(word) if ltr == "-"]
+            for i in range(0, len(mustBeShown2)):
+                letters[mustBeShown2[i]] = "-"
+
+            mustBeShown3 = [i for i, ltr in enumerate(word) if ltr == "’"]
+            for i in range(0, len(mustBeShown3)):
+                letters[mustBeShown3[i]] = "’" 
             initGame(10)
         elif prompt == "n":
             break
@@ -155,9 +168,9 @@ while True:
             for i in range(0, len(mustBeShown2)):
                 letters[mustBeShown2[i]] = "-"
 
-            mustBeShown2 = [i for i, ltr in enumerate(word) if ltr == "'"]
-            for i in range(0, len(mustBeShown2)):
-                letters[mustBeShown2[i]] = "'"    
+            mustBeShown3 = [i for i, ltr in enumerate(word) if ltr == "’"]
+            for i in range(0, len(mustBeShown3)):
+                letters[mustBeShown3[i]] = "’"    
             isWin = False
             initGame(10)
         elif prompt == "n":
