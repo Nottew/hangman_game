@@ -24,6 +24,7 @@ victimArray = ""
 lettersCounter = len(word)
 letters = ['_']*lettersCounter
 isWin = False
+already_guessed = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 
 #print(word) #to fast-bug-check uncomment this row
 
@@ -66,6 +67,9 @@ def printParameters(): #function can be called anywhere and can show current hp,
     print(tabulate(data, tablefmt='fancy_grid'))
     print("")
     print(*letters)
+    print("")
+    print(*already_guessed)
+    print("")
 
 def initGame(initHp): #you can enter hp and initializate new game
     global hp
@@ -84,7 +88,9 @@ def gameLoop():
             guessedIndeces = [i for i, ltr in enumerate(word) if ltr == found]
             for i in range(0, len(guessedIndeces)):
                 letters[guessedIndeces[i]] = found
-            printParameters()
+            for n in range(0, len(already_guessed)):
+                if already_guessed[n] == found:
+                    already_guessed[n] = '_'
             break
             
         elif found == "exit":
@@ -106,7 +112,7 @@ while True:
     gameLoop()
     if hp <= 0:
         victimArray = "|--т\n|  О \n| /|\    \n| / \ \n| "
-        data = [["YOU LOSE! {0}/10♥".format(hp)], [victimArray]]
+        data = [["YOU LOSE! {0}/10♥ The word was: {1}".format(hp, word)], [victimArray]]
         console.print(tabulate(data, tablefmt='fancy_grid'), style="red")
         print("")
         while True:
@@ -118,6 +124,7 @@ while True:
             else:
                 break
         if prompt == "y":
+            already_guessed = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
             victimArray = ""
             letters = ['_']*lettersCounter
             initGame(10)
@@ -134,6 +141,7 @@ while True:
             else:
                 break
         if prompt == "y":
+            already_guessed = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
             victimArray = ""
             word = data_new[random.randint(0, len(data_new))]
             #print(word) #to fast-bug-check uncomment this row
