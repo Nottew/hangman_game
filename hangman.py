@@ -131,7 +131,7 @@ while True:
         elif prompt == "n":
             break
     elif isWin == True:
-        print("\nYou win!")
+        console.print("YOU WIN!", style="white on green")
         while True:
             prompt = input("Would you like to play again? [y/n]: ").lower()
             print('\033[F\033[K', end="")
